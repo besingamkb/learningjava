@@ -60,7 +60,7 @@ public class gradingsystem {
 		if ( average > 98 ) 
 			equivalent = "AAA";
 
-		if ( average > 100 )
+		if ( average == 100 )
 			equivalent = "BEYOND GODLIKE!";
 
 		//System.out.print(average + " " + remarks + " " + equivalent);
