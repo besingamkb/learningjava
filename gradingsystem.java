@@ -78,11 +78,6 @@ public class gradingsystem {
 
 		remarks = "";
 
-
-
-		//System.out.print(average + " " + remarks + " " + equivalent);
-		
-
 		for (int i=1; i < 15; i++) {
 			System.out.print("-");
 		}
