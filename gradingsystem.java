@@ -1,10 +1,63 @@
 import java.util.Scanner;
 
 public class gradingsystem {
+
+	public static int roundup(Float a) {
+		int d = (int) Math.ceil(a);
+		return d;
+	}
+
+	public static String getComments(Float a) {
+		String remarks;
+
+
+		if ( gradingsystem.roundup(a) >= 75 ) {
+			remarks = "Pasado ka tsong!";
+		} else {
+			remarks ="BOBO BAGSAK!HAHA";
+		}
+
+		return remarks;
+	} 
+
+	public static String getEquivalent(Float a) {
+
+		String equivalent;
+		int b = (int) gradingsystem.roundup(a);
+		equivalent = "";
+		if (b <= 74 )
+			equivalent = "F";
+
+		if ( b >= 80 ) 
+			equivalent = "C-";
+
+		if ( b >= 85 )
+			equivalent = "C";
+
+		if ( b >= 87 ) 
+			equivalent = "C+";
+
+		if ( b >= 90 ) 
+			equivalent = "A-";
+
+		if ( b >= 93 ) 
+			equivalent = "A";
+
+		if ( b > 95 ) 
+			equivalent = "AA";
+
+		if ( b > 98 ) 
+			equivalent = "AAA";
+
+		if ( b == 100 )
+			equivalent = "BEYOND GODLIKE!";
+		return equivalent;
+	}
+
 	public static void main(String[] args) {
 
 		Scanner inputs = new Scanner(System.in);
-		String studentID, studentNAME, remarks, equivalent;
+		String studentID, studentNAME, remarks;
 		Float firstSEM, secondSEM, thirdSEM, average;
 		System.out.print("Student ID: ");
 		studentID = inputs.nextLine();
@@ -24,47 +77,11 @@ public class gradingsystem {
 		average = (firstSEM + secondSEM + thirdSEM) / 3;
 
 		remarks = "";
-		equivalent = "";
-		
-		if ( average >= 75 ) {
-			remarks = "Pasado ka tsong!";
-			equivalent = "D";
-		} else {
-			remarks ="BOBO BAGSAK!HAHA";
-		}
 
 
-
-		if (average <= 74 )
-			equivalent = "F";
-
-
-		if ( average >= 80 ) 
-			equivalent = "C-";
-
-		if ( average >= 85 )
-			equivalent = "C";
-
-		if ( average >= 87 ) 
-			equivalent = "C+";
-
-		if ( average >= 90 ) 
-			equivalent = "A-";
-
-		if ( average >= 93 ) 
-			equivalent = "A";
-
-		if ( average > 95 ) 
-			equivalent = "AA";
-
-		if ( average > 98 ) 
-			equivalent = "AAA";
-
-		if ( average == 100 )
-			equivalent = "BEYOND GODLIKE!";
 
 		//System.out.print(average + " " + remarks + " " + equivalent);
-		int d = (int) Math.ceil(average);
+		
 
 		for (int i=1; i < 15; i++) {
 			System.out.print("-");
@@ -72,9 +89,10 @@ public class gradingsystem {
 		System.out.println("-");
 		System.out.println("Student ID: " + studentID);
 		System.out.println("Student Name: " + studentNAME);
-		System.out.println("Average: " + d);
-		System.out.println("Rank: " + equivalent);
-		System.out.println("Professor's comment: " + remarks);
+		System.out.println("Average: " + gradingsystem.roundup(average));
+		System.out.println("Rank: " + gradingsystem.getEquivalent(average));
+		System.out.println("Professor's comment: " + gradingsystem.getComments(average));
+		
 
 	}
 }
